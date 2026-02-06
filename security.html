@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How KoNote protects client data: encryption, access control, audit logging, and compliance features.">
-  <title>Security & Privacy — KoNote</title>
+  <meta name="description" content="How KoNote2 protects client data: encryption, access control, audit logging, and compliance features.">
+  <title>Security & Privacy — KoNote2</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="site-logo">KoNote</a>
+      <a href="index.html" class="site-logo">KoNote2</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
         Menu
       </button>
@@ -34,7 +34,7 @@
       <div class="container">
         <h1>Security & Privacy</h1>
         <p class="hero-tagline">
-          How KoNote protects client data — and what you're responsible for.
+          How KoNote2 protects client data — and what you're responsible for.
         </p>
       </div>
     </section>
@@ -44,9 +44,9 @@
         <div class="disclaimer">
           <p class="disclaimer-title">Shared Responsibility</p>
           <p>
-            KoNote provides security features, but security is a shared responsibility.
+            KoNote2 provides security features, but security is a shared responsibility.
             The software can only protect data if you configure and operate it correctly.
-            This page explains both what KoNote does and what you must do.
+            This page explains both what KoNote2 does and what you must do.
           </p>
         </div>
       </div>
@@ -54,7 +54,7 @@
 
     <section class="alt-bg">
       <div class="container">
-        <h2>What KoNote Does</h2>
+        <h2>What KoNote2 Does</h2>
 
         <div class="card-grid">
           <div class="card">
@@ -67,6 +67,7 @@
               <li><strong>Algorithm:</strong> Fernet (AES-128-CBC + HMAC-SHA256)</li>
               <li><strong>Encrypted fields:</strong> Client names, birth dates, emails, phone numbers, sensitive custom fields</li>
               <li><strong>Key storage:</strong> Your encryption key, stored as an environment variable</li>
+              <li><strong>Key rotation:</strong> Built-in key rotation command for changing encryption keys</li>
             </ul>
             <p class="text-muted">
               Even if someone gains access to the database, encrypted fields
@@ -77,7 +78,7 @@
           <div class="card">
             <h3>Dual-Database Architecture</h3>
             <p>
-              KoNote uses two separate PostgreSQL databases.
+              KoNote2 uses two separate PostgreSQL databases.
             </p>
             <ul>
               <li><strong>Operational database:</strong> Client records, notes, plans (normal CRUD operations)</li>
@@ -92,13 +93,14 @@
           <div class="card">
             <h3>Role-Based Access Control</h3>
             <p>
-              Four roles with different permissions, enforced at the middleware level.
+              Five roles with different permissions, enforced at the middleware level.
             </p>
             <ul>
               <li><strong>Administrator:</strong> System configuration (no direct client access)</li>
               <li><strong>Program Manager:</strong> Full access to their programs' clients and staff</li>
-              <li><strong>Staff/Counsellor:</strong> Access to clients in their assigned programs</li>
-              <li><strong>Receptionist:</strong> Limited access to specific fields only</li>
+              <li><strong>Direct Service:</strong> Access to clients in their assigned programs</li>
+              <li><strong>Front Desk:</strong> Limited access to specific fields only</li>
+              <li><strong>Executive:</strong> Dashboard and reporting access</li>
             </ul>
             <p class="text-muted">
               Staff can only see clients enrolled in programs they're assigned to.
@@ -157,7 +159,7 @@
       <div class="container">
         <h2>What You Must Do</h2>
         <p class="text-muted mb-8">
-          KoNote's security features only work if you fulfil your responsibilities.
+          KoNote2's security features only work if you fulfil your responsibilities.
           These are not optional.
         </p>
 
@@ -190,7 +192,7 @@
               <li>Self-hosted requires a reverse proxy (Caddy, nginx) with certificates</li>
             </ul>
             <div class="notice notice-warning mb-0">
-              <p>Never run KoNote over plain HTTP in production.</p>
+              <p>Never run KoNote2 over plain HTTP in production.</p>
             </div>
           </div>
 
@@ -214,7 +216,7 @@
           <div class="card">
             <h3>Control User Access</h3>
             <p>
-              KoNote provides the tools; you must use them correctly.
+              KoNote2 provides the tools; you must use them correctly.
             </p>
             <ul>
               <li>Only create accounts for people who need access</li>
@@ -259,7 +261,7 @@
         <div class="card">
           <h3>PIPEDA Readiness</h3>
           <p>
-            KoNote includes features to support compliance with Canada's
+            KoNote2 includes features to support compliance with Canada's
             Personal Information Protection and Electronic Documents Act.
           </p>
           <ul>
@@ -267,10 +269,11 @@
             <li>Access controls and audit logging</li>
             <li>Consent tracking fields</li>
             <li>Data retention configuration</li>
+            <li>Multi-stage data erasure workflow with approval chain</li>
             <li>Privacy policy template</li>
           </ul>
           <p class="text-muted">
-            <strong>Note:</strong> Using KoNote doesn't automatically make you PIPEDA-compliant.
+            <strong>Note:</strong> Using KoNote2 doesn't automatically make you PIPEDA-compliant.
             Compliance depends on how you configure and operate the system,
             your policies, and your staff practices.
           </p>
@@ -279,13 +282,14 @@
         <div class="card">
           <h3>GDPR Readiness</h3>
           <p>
-            For organisations serving European clients, KoNote includes:
+            For organisations serving European clients, KoNote2 includes:
           </p>
           <ul>
             <li>Consent tracking (consent_given_at field)</li>
             <li>Data retention periods</li>
-            <li>Erasure request workflow</li>
-            <li>Audit trail of data processing</li>
+            <li>Multi-program-manager erasure approval workflow</li>
+            <li>Automatic erasure execution when all approvals received</li>
+            <li>Audit trail of data processing preserved after erasure</li>
           </ul>
           <p class="text-muted">
             <strong>Note:</strong> GDPR compliance requires more than software features.
@@ -296,7 +300,7 @@
         <div class="card">
           <h3>Accessibility (WCAG 2.2 AA)</h3>
           <p>
-            KoNote is built with accessibility in mind:
+            KoNote2 is built with accessibility in mind:
           </p>
           <ul>
             <li>Semantic HTML structure</li>
@@ -313,7 +317,7 @@
       <div class="container content-width">
         <h2>Security Limitations</h2>
         <p>
-          Being honest about what KoNote cannot do:
+          Being honest about what KoNote2 cannot do:
         </p>
 
         <div class="card">
@@ -336,7 +340,7 @@
         <div class="card">
           <h3>No Automatic Intrusion Detection</h3>
           <p>
-            KoNote logs access but doesn't automatically alert on suspicious patterns.
+            KoNote2 logs access but doesn't automatically alert on suspicious patterns.
             You need to review audit logs periodically or integrate with external
             monitoring tools.
           </p>
@@ -362,13 +366,13 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-links">
-        <a href="https://github.com/konote/konote-web">GitHub Repository</a>
+        <a href="https://github.com/gilliankerr/KoNote-Redux">GitHub Repository</a>
         <a href="documentation.html">Documentation</a>
         <a href="faq.html">FAQ</a>
         <a href="services.html">Professional Services</a>
       </div>
       <p class="footer-copyright">
-        KoNote is open source software under the MIT License.
+        KoNote2 is open source software under the MIT License.
       </p>
     </div>
   </footer>

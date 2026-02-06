@@ -1,13 +1,13 @@
-# KoNote Website
+# KoNote2 Website
 
-Marketing and documentation website for [KoNote](https://github.com/konote/konote-web), an open source client outcome management system for nonprofits.
+Marketing and documentation website for [KoNote2](https://github.com/gilliankerr/KoNote-Redux), an open source client outcome management system for nonprofits.
 
 ## Structure
 
 ```
 konote-website/
 ├── index.html           # Home page
-├── features.html        # What KoNote does and doesn't do
+├── features.html        # What KoNote2 does and doesn't do
 ├── getting-started.html # Evaluation and deployment guide
 ├── documentation.html   # Links to full documentation
 ├── security.html        # Security features and responsibilities
@@ -40,4 +40,4 @@ Open `index.html` in a browser. No build step required.
 
 ## Licence
 
-This website is released under the MIT Licence, same as KoNote itself.
+This website is released under the MIT Licence, same as KoNote2 itself.
