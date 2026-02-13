@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="KoNote features: participant records, outcome plans, progress notes, metrics tracking, participant portal, role-based access, audit logging, data erasure, and AI-assisted writing.">
+  <meta name="description" content="KoNote features: participant records, outcome plans, progress notes, metrics tracking, messaging, meetings and calendar, consent management, participant portal, role-based access, audit logging, data erasure, and AI-assisted writing.">
   <title>Features — KoNote</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" sizes="32x32">
@@ -133,7 +133,51 @@
               <li>Customisable event types (intake, discharge, crisis, etc.)</li>
               <li>Colour-coded event categories</li>
               <li>Safety alerts attached to participant records</li>
+              <li>Two-person safety rule — alerts require a second person to cancel</li>
               <li>Timeline view of participant events</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Messaging & Communication Logging</h3>
+            <p>
+              Log and track all participant communications in one place.
+            </p>
+            <ul>
+              <li>Log phone calls, texts, emails, and in-person visits</li>
+              <li>Quick-log buttons for common interaction types</li>
+              <li>Communication history on participant timeline</li>
+              <li>Optional SMS and email integration (Twilio, SMTP)</li>
+              <li>CASL consent tracking for electronic messages</li>
+              <li>Channel-level contact preferences per participant</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Meetings & Calendar</h3>
+            <p>
+              Schedule and track meetings with participants.
+            </p>
+            <ul>
+              <li>Schedule meetings with date, time, location, and status</li>
+              <li>Meeting types: in-person, virtual, phone, home visit</li>
+              <li>iCal feed — sync meetings to Outlook, Google Calendar, or Apple Calendar</li>
+              <li>Upcoming meetings on the dashboard</li>
+              <li>Meeting history on participant timeline</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Consent Management</h3>
+            <p>
+              Record and track participant consent with a full audit trail.
+            </p>
+            <ul>
+              <li>Consent records linked to participant files</li>
+              <li>Immutable records — consent can be withdrawn but never deleted</li>
+              <li>Withdrawal tracking with reason and date</li>
+              <li>CASL compliance for electronic communications</li>
+              <li>Preferred language and contact preferences</li>
             </ul>
           </div>
 
@@ -265,17 +309,6 @@
         </p>
 
         <div class="card-grid">
-          <div class="card">
-            <h3>Appointment Scheduling</h3>
-            <p>
-              KoNote tracks events and milestones, but it's not a calendar system.
-              You can record that an appointment happened, but not schedule future ones.
-            </p>
-            <p class="text-muted">
-              <strong>Alternative:</strong> Use Google Calendar, Calendly, or a dedicated scheduling tool.
-            </p>
-          </div>
-
           <div class="card">
             <h3>Billing & Invoicing</h3>
             <p>
