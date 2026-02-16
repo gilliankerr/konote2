@@ -1,6 +1,6 @@
 # KoNote Website
 
-Marketing and documentation website for [KoNote](https://github.com/gilliankerr/KoNote-Redux), an open source participant outcome management system for nonprofits.
+Marketing and documentation website for [KoNote](https://github.com/gilliankerr/KoNote), an open source participant outcome management system for nonprofits.
 
 ## Structure
 
@@ -8,6 +8,8 @@ Marketing and documentation website for [KoNote](https://github.com/gilliankerr/
 konote-website/
 ├── index.html           # Home page
 ├── features.html        # What KoNote does and doesn't do
+├── evidence.html        # Research evidence and design principles
+├── demo.html            # Live demo and evaluation
 ├── getting-started.html # Evaluation and deployment guide
 ├── documentation.html   # Links to full documentation
 ├── security.html        # Security features and responsibilities

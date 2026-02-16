@@ -60,6 +60,7 @@
               <li>Custom fields defined by your agency</li>
               <li>Preferred name / display name support</li>
               <li>Multi-program enrolment</li>
+              <li>Program transfer with audit trail and cross-program sharing consent</li>
               <li>Status tracking (active, inactive, discharged)</li>
               <li>Duplicate detection with automatic matching</li>
               <li>Merge workflow for duplicate records</li>
@@ -148,6 +149,9 @@
               <li>Quick-log buttons for common interaction types</li>
               <li>Communication history on participant timeline</li>
               <li>Optional SMS and email integration (Twilio, SMTP)</li>
+              <li>Automated appointment reminders (36 hours in advance)</li>
+              <li>Delivery tracking (sent, delivered, failed, bounced)</li>
+              <li>System health monitoring with admin alerts on channel failures</li>
               <li>CASL consent tracking for electronic messages</li>
               <li>Channel-level contact preferences per participant</li>
             </ul>
@@ -189,6 +193,7 @@
             <ul>
               <li>Five roles: Admin, Program Manager, Direct Service, Front Desk, Executive</li>
               <li>Program-scoped access (staff only see their programs)</li>
+              <li>Program Managers get scoped admin access (templates, metrics, team members within their programs)</li>
               <li>Field-level visibility controls per role</li>
               <li>Confidential programs hidden from unauthorised staff</li>
               <li>Program context switcher for multi-program staff</li>
@@ -220,6 +225,8 @@
               <li>Customise all terminology in English and French</li>
               <li>Enable/disable features via toggles</li>
               <li>Full bilingual interface (English/French) following canada.ca conventions</li>
+              <li>CSV import/export for metric library management</li>
+              <li>Funder report templates with custom demographic breakdowns</li>
             </ul>
           </div>
 
@@ -247,7 +254,11 @@
               <li>Participants log in to view their own outcome plans and progress</li>
               <li>Self-report on metrics between sessions</li>
               <li>View progress charts and milestone history</li>
-              <li>Secure, token-based access — no staff account required</li>
+              <li>Private journal for participant reflections</li>
+              <li>Send messages to assigned worker</li>
+              <li>Request corrections to notes or records</li>
+              <li>Multi-factor authentication (TOTP app or email codes)</li>
+              <li>Account lockout after failed attempts</li>
               <li>Agency controls which fields and plans are visible</li>
               <li>Optional feature — disabled by default</li>
             </ul>
@@ -279,6 +290,7 @@
               <li>Outcome goal improvement suggestions</li>
               <li>Note structure assistance</li>
               <li>Funder narrative generation from aggregate metrics</li>
+              <li>Outcome insights — AI-generated program summaries with transparency timestamps</li>
               <li>Privacy-safe — no participant identifying information sent to AI</li>
             </ul>
           </div>
@@ -286,12 +298,16 @@
           <div class="card">
             <h3>Reporting & Export</h3>
             <p>
-              Get data out when you need it.
+              Get data out when you need it — with controls to prevent misuse.
             </p>
             <ul>
+              <li>Funder report templates with custom demographic breakdowns</li>
+              <li>Achievement rate summaries (% of participants meeting targets)</li>
               <li>CSV export of participant data and metrics</li>
               <li>PDF progress reports</li>
-              <li>Secure, time-limited export links with download tracking</li>
+              <li>Secure, time-limited export links (24-hour expiry)</li>
+              <li>Elevated export controls — large exports trigger admin notification and delay</li>
+              <li>Download tracking and admin revocation</li>
               <li>Audit log export</li>
               <li>Demographics and achievements reports</li>
             </ul>
@@ -354,9 +370,10 @@
           </div>
 
           <div class="card">
-            <h3>Automated Workflows</h3>
+            <h3>Complex Workflow Automation</h3>
             <p>
-              No rules engine or automated alerts. You won't get notified automatically
+              KoNote has basic automation (appointment reminders, health alerts),
+              but no rules engine or complex triggers. You won't get notified automatically
               if a participant hasn't been seen in 30 days.
             </p>
             <p class="text-muted">
@@ -467,7 +484,7 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-links">
-        <a href="https://github.com/gilliankerr/KoNote-Redux">GitHub Repository</a>
+        <a href="https://github.com/gilliankerr/KoNote">GitHub Repository</a>
         <a href="documentation.html">Documentation</a>
         <a href="faq.html">FAQ</a>
         <a href="services.html">Professional Services</a>
