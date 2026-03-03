@@ -69,14 +69,16 @@
               being stored in the database.
             </p>
             <ul>
-              <li><strong>Algorithm:</strong> Fernet (AES-128-CBC + HMAC-SHA256)</li>
-              <li><strong>Encrypted fields:</strong> Participant names, birth dates, emails, phone numbers, sensitive custom fields</li>
-              <li><strong>Key storage:</strong> Your encryption key, stored as an environment variable</li>
+              <li><strong>Algorithm:</strong> Fernet (AES-128-CBC + HMAC-SHA256) for PII at rest</li>
+              <li><strong>Encrypted fields:</strong> Participant names, birth dates, emails, phone numbers, progress note content, sensitive custom fields, registration submissions</li>
+              <li><strong>Key storage:</strong> Your encryption key, stored as an environment variable (Azure Key Vault recommended for production)</li>
               <li><strong>Key rotation:</strong> Built-in key rotation command for changing encryption keys</li>
+              <li><strong>Per-agency keys:</strong> In multi-agency deployments, each agency has its own encryption key — one agency's key cannot decrypt another's data</li>
             </ul>
             <p class="text-muted">
               Even if someone gains access to the database, encrypted fields
-              are unreadable without the encryption key.
+              are unreadable without the encryption key. In shared hosting,
+              one agency's key cannot decrypt another agency's data.
             </p>
           </div>
 
@@ -149,11 +151,12 @@
               Defence-in-depth controls on data exports to prevent unauthorised data extraction.
             </p>
             <ul>
-              <li><strong>Time-limited links:</strong> Export downloads expire after 24 hours</li>
+              <li><strong>SecureExportLink:</strong> Time-limited download links with 24-hour expiry and nonce deduplication</li>
               <li><strong>Elevated exports:</strong> Large exports (100+ participants) or exports containing notes trigger admin notification and a 10-minute delay</li>
               <li><strong>Admin oversight:</strong> Admins can revoke export links before they expire</li>
               <li><strong>Download tracking:</strong> Every download is logged (who, when, how many times)</li>
               <li><strong>Re-validation:</strong> PII access permissions are re-checked at download time</li>
+              <li><strong>Agency-wide export:</strong> AES-256-GCM encrypted export for full agency offboarding, with automatic model discovery and Diceware passphrase generation</li>
             </ul>
           </div>
 
@@ -185,6 +188,33 @@
               <li>X-Frame-Options (clickjacking protection)</li>
               <li>X-Content-Type-Options</li>
               <li>CSRF protection on all forms</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>PHIPA Cross-Program Consent</h3>
+            <p>
+              Enforces Ontario PHIPA requirements for sharing clinical notes
+              across programs within an agency.
+            </p>
+            <ul>
+              <li><strong>Fail-closed design:</strong> Cross-program notes are hidden by default</li>
+              <li><strong>Consent-gated access:</strong> Clinical notes only visible across programs when the participant or agency has explicitly enabled sharing</li>
+              <li><strong>List and detail enforcement:</strong> Consent filters applied on both note lists (querysets) and individual note views</li>
+              <li><strong>Exempt views:</strong> Aggregate counts, de-identified reports, and plan views are unaffected</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Rate Limiting &amp; Brute-Force Protection</h3>
+            <p>
+              Protections against automated attacks on authentication endpoints.
+            </p>
+            <ul>
+              <li><strong>Account lockout:</strong> Participant portal locks accounts after repeated failed login attempts</li>
+              <li><strong>Session security:</strong> Session tokens stored in the database with configurable timeouts</li>
+              <li><strong>Secure cookies:</strong> Session and CSRF cookies marked secure in production</li>
+              <li><strong>System checks:</strong> Startup validation ensures encryption keys, security middleware, and cookie flags are correctly configured</li>
             </ul>
           </div>
         </div>
@@ -303,6 +333,7 @@
           </p>
           <ul>
             <li>Encryption of personal information (Fernet AES at rest)</li>
+            <li>Per-agency encryption keys in multi-agency deployments</li>
             <li>Access controls and audit logging</li>
             <li>Consent recording with immutable withdrawal tracking</li>
             <li>Cross-program consent enforcement — clinical notes shared only with participant or agency permission</li>
@@ -310,6 +341,7 @@
             <li>Multi-stage data erasure workflow with approval chain</li>
             <li>Privacy policy template</li>
             <li>Canadian data residency option (OVHcloud Beauharnois, QC)</li>
+            <li>Offline field collection data protection — PII tiers and device loss protocols</li>
           </ul>
           <p class="text-muted">
             <strong>Note:</strong> Using KoNote doesn't automatically make you PHIPA- or PIPEDA-compliant.
@@ -339,14 +371,17 @@
         <div class="card">
           <h3>Accessibility (WCAG 2.2 AA)</h3>
           <p>
-            KoNote is built with accessibility in mind:
+            KoNote is built with accessibility as a core requirement, not an afterthought:
           </p>
           <ul>
-            <li>Semantic HTML structure</li>
-            <li>Keyboard navigation</li>
-            <li>Sufficient colour contrast</li>
-            <li>Screen reader compatibility</li>
-            <li>Skip navigation links</li>
+            <li>Semantic HTML structure with proper heading hierarchy</li>
+            <li>Full keyboard navigation with WAI-ARIA roving tabindex patterns</li>
+            <li>WCAG 2.2 AA colour contrast compliance</li>
+            <li>Touch target sizes meeting WCAG 2.5.8 minimum (24px)</li>
+            <li>Screen reader compatible — WAI-ARIA roles for menus, tabs, and interactive elements</li>
+            <li>Skip navigation links on every page</li>
+            <li>axe-core automated accessibility tests integrated into CI pipeline</li>
+            <li>Service worker provides graceful offline fallback</li>
           </ul>
         </div>
       </div>

@@ -213,15 +213,18 @@
           </button>
           <div class="faq-answer">
             <p>
-              KoNote is a web application that requires an internet connection
-              for full functionality. However, a service worker provides a graceful
-              offline fallback — if connectivity drops, you'll see a friendly message
-              and the app resumes automatically when you're back online.
+              The KoNote web interface requires an internet connection for full
+              functionality. A service worker provides a graceful offline fallback —
+              if connectivity drops, you will see a friendly message and the app
+              resumes automatically when you are back online.
             </p>
             <p>
-              There is no offline data entry or local storage. If staff need to work
-              in locations without internet, they would need to take notes elsewhere
-              and enter them into KoNote later.
+              For field work in locations without internet, KoNote integrates with
+              ODK Central for offline-capable mobile data collection. Staff collect
+              data on Android devices and sync it to KoNote when connectivity is
+              available. PII protection tiers control what identifiers are sent to
+              field devices, and a device loss protocol protects data if a device
+              is lost or stolen.
             </p>
           </div>
         </div>
@@ -242,6 +245,116 @@
               <li>Custom development to add API endpoints (Django makes this possible)</li>
               <li>Direct database access (with caution and understanding of the schema)</li>
             </ul>
+          </div>
+        </div>
+
+        <h2 class="mt-8">Features</h2>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How do surveys work?
+          </button>
+          <div class="faq-answer">
+            <p>
+              KoNote includes a full survey system for collecting structured feedback.
+              Admins create surveys with six question types, conditional logic, and
+              optional section scoring. Surveys can be delivered three ways:
+            </p>
+            <ul>
+              <li><strong>Participant portal:</strong> Assigned surveys appear on the
+                participant's dashboard. Responses auto-save as they go.</li>
+              <li><strong>Shareable public links:</strong> Anyone can complete a survey
+                via a URL — no login required. Useful for community feedback or
+                pre-intake screening.</li>
+              <li><strong>Staff data entry:</strong> Staff enter responses on behalf of
+                a participant during a session.</li>
+            </ul>
+            <p>
+              Surveys can be assigned manually or automatically using trigger rules
+              based on events, program enrolment, time intervals, or participant
+              characteristics. You can import existing instruments (like PHQ-9 or SPDAT)
+              from CSV files.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What is the participant portal?
+          </button>
+          <div class="faq-answer">
+            <p>
+              The participant portal is an optional self-service website where
+              participants can:
+            </p>
+            <ul>
+              <li>View their outcome plans and progress charts</li>
+              <li>Complete assigned surveys</li>
+              <li>Write private journal entries</li>
+              <li>Send messages to their assigned worker</li>
+              <li>Request corrections to their records</li>
+              <li>Access shared resources and program materials</li>
+            </ul>
+            <p>
+              Staff invite participants via a secure link with an optional verbal
+              code for identity verification. Participants create their own credentials
+              and go through a consent flow before accessing the portal. The portal
+              supports multi-factor authentication (TOTP app or email codes) and
+              staff can revoke access or reset MFA at any time.
+            </p>
+            <p>
+              The portal is disabled by default. Enable it in the Features settings
+              when your agency is ready to offer it.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does data export work?
+          </button>
+          <div class="faq-answer">
+            <p>
+              KoNote provides two levels of data export:
+            </p>
+            <ul>
+              <li><strong>Individual participant export:</strong> From a participant's
+                profile, staff can export their data in PDF, CSV, or JSON format.
+                Downloads use secure, time-limited links that expire after 24 hours.
+                Large exports trigger admin notification and a brief delay for oversight.</li>
+              <li><strong>Agency-wide offboarding export:</strong> A management command
+                exports all agency data in AES-256-GCM encrypted format with a Diceware
+                passphrase. This is designed for agency offboarding or data migration —
+                not routine reporting.</li>
+            </ul>
+            <p>
+              All exports are fully audited. Admins can revoke download links, and
+              permissions are re-checked at download time to prevent stale access.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What is demo mode?
+          </button>
+          <div class="faq-answer">
+            <p>
+              Demo mode provides pre-configured training accounts with realistic sample
+              data so staff can explore KoNote without affecting real participant records.
+              Key safeguards include:
+            </p>
+            <ul>
+              <li>Demo records are excluded from all reports, exports, and dashboards</li>
+              <li>Demo admin accounts are restricted to view-only for agency settings</li>
+              <li>A persistent training-mode banner appears on every page</li>
+              <li>Demo login buttons are visually separated from the real login form
+                under a "Training Accounts" label</li>
+              <li>Demo login events are audited separately from production activity</li>
+            </ul>
+            <p>
+              Demo data can be regenerated at any time to reset the training environment.
+            </p>
           </div>
         </div>
 
@@ -298,13 +411,17 @@
           </button>
           <div class="faq-answer">
             <p>
-              KoNote is designed for single-agency use. While you could technically
-              create separate "programs" for different organisations, there's no
-              true multi-tenancy with data isolation between organisations.
+              Yes. KoNote supports multi-agency hosting, where multiple organisations
+              share a single server while maintaining strict data separation. Each
+              agency gets its own separate data store and encryption key, with
+              independent configuration for terminology, features, and programs.
             </p>
             <p>
-              Each organisation should run their own instance for proper data
-              separation and security.
+              This is designed for umbrella organisations, consortia, or regional
+              networks that want to reduce hosting costs without compromising
+              data privacy. Each agency's data remains fully isolated from
+              other agencies on the same server. Typical per-agency costs drop
+              from $35&ndash;100/month (standalone) to $4&ndash;10/month (shared).
             </p>
           </div>
         </div>
