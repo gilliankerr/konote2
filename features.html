@@ -11,6 +11,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="stylesheet" href="/_pagefind/pagefind-ui.css">
 </head>
 <body>
   <a href="#main" class="skip-nav">Skip to main content</a>
@@ -31,6 +32,7 @@
         <a href="services.html">Services</a>
         <a href="faq.html">FAQ</a>
       </nav>
+      <button class="search-trigger" aria-label="Search" id="search-trigger">Search</button>
     </div>
   </header>
 
@@ -412,19 +414,23 @@
             </ul>
           </div>
           <div class="card">
-            <h3>CIDS Data Standards Compliance</h3>
+            <h3>CIDS &amp; Common Approach Compliance</h3>
             <p>
-              Align your outcome data with the Common Impact Data Standard (CIDS)
-              for interoperability and standards-compliant reporting.
+              FullTier compliance with the
+              <a href="https://commonapproach.org" target="_blank" rel="noopener">Common Impact Data Standard (CIDS) v3.2.0</a>
+              — the highest tier defined in the standard. Staff never see CIDS fields;
+              the system maps their normal work to CIDS automatically.
             </p>
             <ul>
-              <li>CIDS metadata fields on programs, outcomes, and indicators</li>
-              <li>Organisation profile with CIDS sector, geography, and legal status</li>
-              <li>CIDS code lists imported and mapped to your programs and outcomes</li>
-              <li>Admin UI for tagging outcomes and indicators with CIDS codes</li>
+              <li>FullTier compliance — all three tiers (Basic, Essential, Full) covered</li>
+              <li>All 17 official CIDS code lists imported (SDG, IRIS+, sectors, populations)</li>
+              <li>Auto-populated CIDS metadata on programs, outcomes, and indicators</li>
+              <li>Organisation profile with sector, geography, and legal status</li>
+              <li>JSON-LD export using the official CIDS context for machine-readable data sharing</li>
+              <li>Impact dimensions: scale, depth, and duration computed from service data</li>
               <li>Standards Alignment appendix automatically included in funder reports</li>
-              <li>Machine-readable export for sharing data with other standards-compliant systems</li>
-              <li>Impact dimensions for structured outcome categorisation</li>
+              <li>Privacy-safe — exports contain aggregate data only, never individual records</li>
+              <li>Validated against the CIDS 3.2.0 ontology and SHACL shape files</li>
             </ul>
           </div>
 
@@ -680,5 +686,15 @@
       });
     }
   </script>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Search KoNote">
+    <div class="search-dialog-inner">
+      <button class="search-dialog-close" aria-label="Close search" id="search-close">&times;</button>
+      <div id="search"></div>
+    </div>
+  </dialog>
+
+  <script src="/_pagefind/pagefind-ui.js"></script>
+  <script src="js/search.js"></script>
+
 </body>
 </html>
